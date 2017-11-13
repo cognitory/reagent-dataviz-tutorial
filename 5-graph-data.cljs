@@ -125,6 +125,7 @@
 (defn app-view []
   [:div
    [:h1 "Hello World"]
+   [graph-view]
    [slider-view]
    [table-view]])
 
