@@ -1,4 +1,6 @@
-# Reagent 
+# DataViz with ClojureScript and Reagent 
+
+Toronto JS Workshop 2017-11-14 
 
 
 ## Demo
@@ -132,11 +134,11 @@ class List < Component {
 ```
 
 
-      *-------------------------------------------------------------------------------------------*
+      *----------------------------------------------------------------------*
  
- all local state                                                                           single global state
-   - each component keeps its own state                                                       - named fns to change state 
-   - pass data and event handlers via props                                                   - named fns to extract a subset of state
+ all local state                                                    single global state
+   - each component keeps its own state                               - named fns to change state 
+   - pass data and event handlers via props                           - named fns to extract a subset of state
 
 ```
 
