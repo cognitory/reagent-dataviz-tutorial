@@ -17,18 +17,20 @@
 
   - similar:
     - functional
-    - { }  [  ] 
+    - similar data types `{ }` `[ ]` 
 
   - major relevant differences:
-    - ( ) 
+    - `( )`
       - brackets come before the function name
-      - mostly just ( and [ 
+      - `(` and `[` used for structure, not `{`
     - new type: `:keywords`
       - like Ruby's symbols
-      - mostly used in maps { }
+      - mostly used in maps `{ }`
     - implicit return
     - atoms
       - for state
+
+In Clojure:
 
 ```clojure
   (def data (atom {:counter 0}))
@@ -41,6 +43,7 @@
   (println (@data :counter))
 ```
 
+In Javascript:
 
 ```javascript
   let data = { counter: 0 };
@@ -65,10 +68,12 @@
 
   - components are functions (vs usually classes in js)
 
-  - "shouldComponentUpdate" taken care for us
+  - `shouldComponentUpdate` taken care for us
   - rarely make use of component lifecycle functions
   - don't use React's state 
 
+
+In Clojure + Reagent:
 
 ```clojure
 (def widgets 
@@ -90,6 +95,7 @@
       [widget-view widget])])
 ```
 
+In Javascript + React:
 
 ```jsx
 const widgets = {1: {id: 1, name: "foo", active: true},
@@ -122,12 +128,19 @@ class List < Component {
 ## Architecture
 
   - typically see a spectrum of: 
-    - all local state 
-     - each component keeps its own state
-     - pass data and event handlers via props
 
-    - single global state
-      - the way we'll be doing today
+```
+
+
+      *-------------------------------------------------------------------------------------------*
+ 
+ all local state                                                                           single global state
+   - each component keeps its own state                                                       - named fns to change state 
+   - pass data and event handlers via props                                                   - named fns to extract a subset of state
+
+```
+
+  - today, we will be doing "single global state"
 
 
 ## Data Flow
@@ -166,5 +179,5 @@ class List < Component {
     - ie. less fiddling with parens
   - limitations
     - can only use namespaces that have been provided for you (ex. reagent, clojure.string)
-    - no :refer, only :as
+    - no `:refer`, only `:as`
     - no macros
