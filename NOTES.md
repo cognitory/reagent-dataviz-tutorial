@@ -83,11 +83,14 @@ In Clojure + Reagent:
     {1 {:id 1 :name "foo" :active? true}
      2 {:id 2 :name "bar" :active? false}}))
 
+(defn set-active! [id]
+  (swap! widgets assoc-in [id :active?] true))
+
 (defn widget-view [widget]
   [:div.widget 
     {:class (when (widget :active?) "active")
      :on-click (fn [_]
-                 (swap! widgets assoc-in [(widget :id) :active?] true)}
+                 (set-active! (widget :id)))}
     (widget :name)])
 
 (defn list-view []
@@ -104,9 +107,13 @@ const widgets = {1: {id: 1, name: "foo", active: true},
                  2: {id: 2, name: "bar", active: false}};
 
 class Widget < Component {
+  setActive () {
+    widgets[this.props.id]["active"] = true;
+  }
   render () {
     return (
-      <div class="widget { if(this.props.active?) { "active" } }">
+      <div class="widget { if(this.props.active?) { "active" } }"
+           onClick={ this.setActive }>
         { this.props.name }
       </div>
     );
