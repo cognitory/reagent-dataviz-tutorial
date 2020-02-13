@@ -1,6 +1,6 @@
 # Frontend UI and Data Viz with Clojurescript + Reagent 
 
-  - go to the web editor: https://www.cognitory.com/
+  - go to the web editor: https://code.cognitory.com/
 
 ## Clean Slate
 
